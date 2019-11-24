@@ -1,0 +1,25 @@
+#java -Djargon.debug=3 -classpath lib/jargon.jar:lib/HTTPRandomAccessFile.jar:lib/InternalErrorException.jar:lib/Suprim.jar:lib/cvs_cog-kit.jar:lib/ij.jar:./released_bin/classes/ vdg.StartApplication
+
+#java -Dd=true -classpath lib/jargon.jar:lib/HTTPRandomAccessFile.jar:lib/InternalErrorException.jar:lib/Suprim.jar:lib/cvs_cog-kit.jar:lib/ij.jar:./released_bin/classes/ edu.ucsd.ncmir.gridwrap.gui.GridStatusWindow
+
+# New GUI Interface
+#java -Dd=true -classpath lib/jargon.jar:lib/HTTPRandomAccessFile.jar:lib/InternalErrorException.jar:lib/Suprim.jar:lib/cvs_cog-kit.jar:lib/ij.jar:./released_bin/classes/ edu.ucsd.ncmir.gridwrap.gui.GridWindow
+
+#$JAVA_HOME/bin/java -Dd=true -classpath lib/jargon.jar:lib/HTTPRandomAccessFile.jar:lib/InternalErrorException.jar:lib/Suprim.jar:lib/cvs_cog-kit.jar:lib/ij.jar:./released_bin/classes/ edu.ucsd.ncmir.gridwrap.GridWrap
+
+# Test Just the GUI Interface
+#java -classpath lib/jargon.jar:lib/HTTPRandomAccessFile.jar:lib/InternalErrorException.jar:lib/Suprim.jar:lib/cvs_cog-kit.jar:lib/ij.jar:./released_bin/classes/ edu.ucsd.ncmir.gridwrap.gui.GridStatusWindow 
+
+# Test ImageJ
+$JAVA_HOME/bin/java -classpath lib/srbwrapper.jar:lib/HTTPRandomAccessFile.jar:lib/InternalErrorException.jar:lib/cvs_cog-kit.jar:lib/jargon.jar:./released_bin/classes/ edu.ucsd.ncmir.gridwrap.GridWrap orion.sdsc.edu 7617 TeleDemo /telescience/home/TeleDemo.portal portal prtl-unix-sdsc https://telescience.ucsd.edu/CA/ b89793e4 null java -mx500m -classpath http://ncmir.ucsd.edu/distr/khimung/lib/ij.jar -Dplugins.dir=http://donor.ucsd.edu:7873/JFIDO/data/jars/dist/plugins/pluginslist.txt ij.ImageJ srb://D://telescience/home/TeleDemo.portal/TP_r816 srb://F://telescience/home/TeleDemo.portal/TP_r816/spiny.bmp 
+
+# Test multiple jar downloads
+#$JAVA_HOME/bin/java -classpath lib/HTTPRandomAccessFile.jar:lib/InternalErrorException.jar:lib/cvs_cog-kit.jar:lib/jargon.jar:./released_bin/classes/ edu.ucsd.ncmir.gridwrap.GridWrap srb.sdsc.edu 6617 TeleDemo /home/TeleDemo.portal portal prtl-unix-sdsc https://telescience.ucsd.edu/CA/ b89793e4 null java -mx500m -classpath http://ncmir.ucsd.edu/distr/khimung/lib/ij.jar=http://rsb.info.nih.gov/ij/plugins/jimi.html -Dplugins.dir=http://donor.ucsd.edu:7873/JFIDO/data/jars/dist/plugins/pluginslist.txt ij.ImageJ srb://home/TeleDemo.portal/ImageJ/osaka3_sub7.jpg srb://home/TeleDemo.portal/chest-X-ray.jpg srb://home/TeleDemo.portal/chest-X-ray2.jpg srb://home/TeleDemo.portal/osaka3_sub7.jpg srb://home/TeleDemo.portal/util.jar srb://home/TeleDemo.portal/JViewer/sample_geometry.trace
+
+#$JAVA_HOME/bin/java -classpath lib/HTTPRandomAccessFile.jar:lib/InternalErrorException.jar:lib/cvs_cog-kit.jar:lib/jargon.jar:./released_bin/classes/ edu.ucsd.ncmir.gridwrap.GridWrap srb.sdsc.edu 6617 TeleDemo /home/TeleDemo.portal portal prtl-unix-sdsc https://telescience.ucsd.edu/CA/ b89793e4 null java -mx500m -classpath http://ncmir.ucsd.edu/distr/khimung/lib/ij.jar=http://ncmir.ucsd.edu/distr/khimung/lib/JViewer.jar -Dplugins.dir=http://donor.ucsd.edu:7873/JFIDO/data/jars/dist/plugins/pluginslist.txt ij.ImageJ srb://home/TeleDemo.portal/ImageJ/osaka3_sub7.jpg srb://home/TeleDemo.portal/chest-X-ray.jpg srb://home/TeleDemo.portal/chest-X-ray2.jpg srb://home/TeleDemo.portal/osaka3_sub7.jpg srb://home/TeleDemo.portal/util.jar srb://home/TeleDemo.portal/JViewer/sample_geometry.trace
+
+#$JAVA_HOME/bin/java -classpath lib/HTTPRandomAccessFile.jar:lib/InternalErrorException.jar:lib/cvs_cog-kit.jar:lib/jargon.jar:./released_bin/classes/ edu.ucsd.ncmir.gridwrap.GridWrap srb.sdsc.edu 6617 TeleDemo /home/TeleDemo.portal portal prtl-unix-sdsc https://telescience.ucsd.edu/CA/ b89793e4 null srb://home/TeleDemo.portal/ImageJ/osaka3_sub7.jpg  
+
+#$JAVA_HOME/bin/java -classpath lib/HTTPRandomAccessFile.jar:lib/InternalErrorException.jar:lib/cvs_cog-kit.jar:lib/jargon.jar:./released_bin/classes/ edu.ucsd.ncmir.gridwrap.GridWrap srb.sdsc.edu 6617 TeleDemo /home/TeleDemo.portal portal prtl-unix-sdsc https://telescience.ucsd.edu/CA/ b89793e4 null srb://home/TeleDemo.portal/ImageJ/osaka3_sub7.jpg srb://home/TeleDemo.portal/JViewer 
+
+#$JAVA_HOME/bin/java -classpath lib/HTTPRandomAccessFile.jar:lib/InternalErrorException.jar:lib/cvs_cog-kit.jar:lib/jargon.jar:./released_bin/classes/ edu.ucsd.ncmir.gridwrap.GridWrap srb.sdsc.edu;6617;8585 

@@ -1,0 +1,116 @@
+<?xml version="1.0"?>
+
+<project name="GridWrap" default="help" basedir=".">
+
+	<!-- Project-wide settings. All directories are relative to the -->
+	<!-- project root directory -->
+
+	<!-- Project directories -->
+	<property name="src.dir" value="./src"/>
+	<property name="docs.dir" value="./doc"/>
+	<property name="lib.dir" value="./lib"/>
+	<property name="dist.dir" value="./dist"/>
+
+	<!-- Temporary build directories -->
+	<property name="build.dir" value="released_bin"/>
+	<property name="build.classes" value="${build.dir}/classes"/>
+	<property name="build.lib" value="${build.dir}/lib"/>
+	
+	<!-- Global settings -->
+	<property name="debug.flag" value="on"/>
+
+	<!-- Global "magic" property for <javac> -->
+	<property name="build.compiler" value="modern"/>
+
+	<!-- Global classpath that includes all auxiliary libraries -->
+	<path id="classpath">
+		<fileset dir="${lib.dir}">
+			<include name="**/*.jar"/>
+		</fileset>
+	</path>
+
+	<!-- Create the temporary build directories prior to the compilation -->
+	<!-- Start time will be marked for logging purpose -->
+	<!-- These temporary build directories are deleted in clean targets -->
+	<target name="prepare">
+		<!--<mkdir dir="${build.dir}"/>-->
+		<mkdir dir="${docs.dir}"/>
+		<mkdir dir="${build.lib}"/>
+
+		<!-- Set the internal value for current time -->
+		<tstamp/>
+		<!-- Then referenced using echo -->
+		<echo message="${TSTAMP}"/>
+	</target>
+
+	<target name="compile" depends="src">
+	</target>
+
+	<target name="new" depends="cleanall, compile">
+	</target>
+
+	<!-- compile the source code -->
+	<target name="src" depends="prepare">
+		<mkdir dir="${build.classes}"/>
+		<javac srcdir="${src.dir}" 
+			   destdir="${build.classes}"
+		       debug="${debug.flag}" 
+			   deprecation="off">
+			<classpath refid="classpath"/>
+		</javac>
+		<jar jarfile="${build.lib}/gridwrap.jar"
+			 basedir="${build.classes}">
+		</jar>
+	</target>
+
+	<target name="javadoc" depends="compile">
+		<javadoc packagenames="edu.ucsd.birn.gridwrap.*"
+			sourcepath="${src.dir}"
+			destdir="${docs.dir}"
+			author="true"
+			version="true"
+			windowtitle="GridWrap API"
+			doctitle="GridWrap"
+			bottom="Copyright © 2004 BIRN. All Rights Reserved."
+		/>
+	</target>
+
+
+	<!-- Delete class files built during the previous compilation -->
+	<target name="clean">
+		<delete>
+			<fileset dir="${build.classes}" includes="**/*.class"/>
+			<fileset dir="${docs.dir}" includes="**/*.html"/>
+			<fileset dir="${docs.dir}" includes="**/*.css"/>
+		</delete>
+	</target>
+
+	<!-- Delete any created directories and all their contents -->
+	<target name="cleanall" depends="clean">
+		<!--<delete dir="${build.dir}"/>-->
+		<delete dir="${build.classes}"/>
+		<delete dir="${build.lib}"/>
+		<delete dir="${dist.dir}"/>
+		<delete dir="${docs.dir}/edu"/>
+		<delete dir="${docs.dir}/resources"/>
+		<delete file="${docs.dir}/package-list"/>
+		<delete file="${docs.dir}/README.txt"/>
+	</target>
+
+	<!-- Displays usage information to user -->
+	<target name="help">
+		<echo message="Required Jar files include:"/>
+		<echo message="		jargon.jar:http://www.npaci.edu/dice/srb/jargon" />
+		<echo message="		gsi-classes.jar:http://www.npaci.edu/dice/srb/jargon" />
+		<echo message="		HTTPRandomAccessFile.jar:http://www.ncmir.ucsd.edu/distr/lib/" />
+		<echo message="		InternalErrorException.jar:http://www.ncmir.ucsd.edu/distr/lib/" />
+		<echo message="Build GridWrap with ANT. Targets include:"/>
+		<echo message="		compile - build the entire application and its libraries"/>
+		<echo message="		javadoc - build the entire application, its libraries, and the javadocs"/>
+		<echo message="		new - clean the previous build and rebuild the app"/>
+		<echo message="		clean - clean all class files"/>
+		<echo message="		cleanall - clean temporarily created directories"/>
+		<echo message="		help - display this information"/>
+	</target>
+
+</project>
